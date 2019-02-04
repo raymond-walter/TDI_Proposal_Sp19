@@ -1,1 +1,1 @@
-Unrenormalized frequency distributions for each decade individually and all together.
+Unrenormalized frequency distribution for all years.
