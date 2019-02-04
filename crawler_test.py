@@ -108,7 +108,8 @@ for w in all_words:
 
 
 stopwords.extend(['calculations','calculated','results','properties','found','within','show','agreement'])
-result['abstract_cleaned'] = result['abstract_cleaned'].apply(lambda x: [item for item in x if item not in stop])#---Put all words in array, plot it out
+result['abstract_cleaned'] = result['abstract_cleaned'].apply(lambda x: [item for item in x if item not in stop])
+#---Put all words in array, plot it out
 all_words = result['abstract_cleaned'].sum()
 #---Get frequency and plot
 freq = nltk.FreqDist(all_words)
