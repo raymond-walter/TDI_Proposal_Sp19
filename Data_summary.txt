@@ -1,10 +1,24 @@
-I propose to develop a free bibliometric tool for individual scientists to see how their work has evolved over time, compare their publishing record to prominent scientists, and identify the central concepts used in their work over time. The eventual goal would be to scale up for use by funding agencies, philanthropy organizations to evaluate the topics of scientific proposals and the productivity of individual scientists. I am developing this in the context of physics, broadly similar to concept mapping schemes in medicine. 
+I propose to develop a free bibliometric tool for individual scientists to see how their work has evolved over time, compare their publishing record to prominent scientists, and identify the central concepts used in their work over time. 
+The eventual goal would be to scale up for use by funding agencies, philanthropy organizations to evaluate the topics of scientific proposals and the productivity of individual scientists. 
+I am developing this in the context of physics, broadly similar to concept mapping schemes in medicine. 
 
-Though there are resources available such as the arxiv API, these have the problem of inadequate control over scientific quality of the work appearing there. Therefore, I choose to instead analyze data from peer-reviewed journals of high-quality. In the present case, I gratefully acknowledge us of the Physical Review Online Archive (PROLA: https://journals.aps.org/archive/). My tests were on a relatively small data set, but I have submitted a request for permission to use abstracts and related data for my project, which is pending. I built a webscraper to access these data. As a case study, I have decided to build a dataset from the abstracts and other publication data of the esteemed computational condensed matter physicist, Dr. Steven G. Louie. Out of his over 600 papers, 377 appear on PROLA. It is a large, but individualized, dataset.
+Though there are resources available such as the arxiv API, these have the problem of inadequate control over scientific quality of the work appearing there. 
+Therefore, I choose to instead analyze data from peer-reviewed journals of high-quality. In the present case, I gratefully acknowledge us of the Physical Review Online Archive (PROLA). 
+My tests used a relatively small data set, but I have submitted a request for permission to use abstracts and related data for my project, which is pending. 
+I built a webscraper to access these data. 
+As a case study, I have decided to build a dataset from the abstracts and other publication data of the esteemed computational condensed matter physicist, Dr. Steven G. Louie. 
+Out of his over 600 papers, 377 appear on PROLA. 
+It is a large, but individualized, dataset.
 
-The webscraper is basic, but can be readily improved upon. A search query is submitted for Dr. Louie’s papers and  I manually cycle through the search results. Later the search queries can be made directly, and improved navigation will obviate the need for the loop by pressing the “next” button automatically. Other journals, with or without APIs, may be structured differently. From the PROLA search results, the crawler navigates to each paper’s landing page, extracts the abstract text and other data (doi, authors [as one string], title, publication info [data published, journal, volume]), and returns to the search page, until all search results are recorded. The data are stored in a cumulative Pandas dataframe and outputted to JSON format.
+The webscraper is basic, but can be readily improved upon. 
+A search query is submitted for Dr. Louie’s papers and  I manually cycle through the search results. 
+Later the search queries can be made directly, and improved navigation will obviate the need for the loop by pressing the “next” button automatically. 
+Other journals, with or without APIs, may be structured differently. 
+From the PROLA search results, the crawler navigates to each paper’s landing page, extracts the abstract text and other data (doi, authors [as one string], title, publication info [data published, journal, volume]), and returns to the search page, until all search results are recorded. 
+The data are stored in a cumulative Pandas dataframe and outputted to JSON format.
+The output JSON file is omitted from here to avoid concerns over copyright of the article abstracts. 
+The abstracts themselves are publicly available on PROLA and my web scraper script is provided.
 
+Then Natural Language Processing tools (including some data cleaning) are applied. 
+Latent Dirichlet Allocation (LDA) has been applied elsewhere and will be added to the hosted code.
 The Selenium driver with the Firefox web browser is used, together with the Beautiful Soup python package.
-
-The output JSON file is omitted from here to avoid concerns over copyright of the article abstracts. The abstracts themselves are publicly available on PROLA and my web scraper script is provided.
-
